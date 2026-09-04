@@ -19,6 +19,24 @@ Offizielle One-Page-Website der Rock/Metal-Band **Mementomorium** — reines HTM
 
 Einfach `index.html` im Browser öffnen oder z. B. mit `npx serve` lokal hosten — es sind keine Build-Schritte nötig.
 
+## CI-Checks
+
+Bei jedem Push/PR auf `main` laufen automatisch (siehe `.github/workflows/ci.yml`):
+
+- **Lint HTML/CSS/JS** — `html-validate`, `stylelint`, `eslint` (Konfigs: `.htmlvalidate.json`, `.stylelintrc.json`, `eslint.config.mjs`)
+- **Link-Check** — prüft alle internen Anker (`#musik`, `#tourdaten`, …) und externen Links auf Erreichbarkeit (`lychee`)
+- **Lighthouse** — Performance-, Accessibility-, Best-Practices- und SEO-Audit
+
+Lokal ausführen:
+
+```bash
+npm install
+npm run lint          # HTML + CSS + JS in einem Rutsch
+npm run lint:html
+npm run lint:css
+npm run lint:js
+```
+
 ## Wo ihr eure eigenen Inhalte einsetzt
 
 ### 1. Bandfoto / Hero-Hintergrund
