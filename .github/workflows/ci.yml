@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint HTML / CSS / JS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint HTML (html-validate)
+        run: npm run lint:html
+
+      - name: Lint CSS (stylelint)
+        run: npm run lint:css
+
+      - name: Lint JS (eslint)
+        run: npm run lint:js
+
+  link-check:
+    name: Check links & anchors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lychee link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude "https://www.instagram.com/.*"
+            --exclude "https://www.tiktok.com/.*"
+            --accept 200,206,429
+            --max-retries 3
+            --timeout 20
+            index.html
+          fail: true
+
+  lighthouse:
+    name: Lighthouse (Performance / A11y / Best Practices / SEO)
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Serve site
+        run: npx --yes http-server . -p 8080 --silent &
+
+      - name: Wait for local server
+        run: npx --yes wait-on http://127.0.0.1:8080/index.html
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: http://127.0.0.1:8080/index.html
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
