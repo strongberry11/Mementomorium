@@ -41,7 +41,6 @@ jobs:
         with:
           args: >-
             --no-progress
-            --exclude-mail
             --exclude "https://www.instagram.com/.*"
             --exclude "https://www.tiktok.com/.*"
             --accept 200,206,429
