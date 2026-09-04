@@ -1,0 +1,75 @@
+name: 🌐 Website-Aufgabe
+description: Neue Aufgabe rund um die Website erfassen
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: beschreibung
+    attributes:
+      label: Beschreibung
+      description: Was muss gemacht werden? Möglichst konkret formulieren.
+      placeholder: z. B. Kontaktformular auf der Startseite reparieren
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bereich
+    attributes:
+      label: Bereich
+      description: Welchen Teil der Website betrifft die Aufgabe?
+      options:
+        - Frontend
+        - Backend
+        - Content / Texte
+        - Design
+        - SEO
+        - Sonstiges
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioritaet
+    attributes:
+      label: Priorität
+      options:
+        - 🔴 Hoch
+        - 🟡 Mittel
+        - 🟢 Niedrig
+    validations:
+      required: true
+
+  - type: input
+    id: seite
+    attributes:
+      label: Betroffene Seite / URL
+      description: Falls zutreffend – welche Seite oder welcher Bereich ist betroffen?
+      placeholder: z. B. /kontakt oder Startseite
+    validations:
+      required: false
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline (falls vorhanden)
+      placeholder: z. B. 15.09.2026
+    validations:
+      required: false
+
+  - type: textarea
+    id: akzeptanzkriterien
+    attributes:
+      label: Akzeptanzkriterien
+      description: Woran erkennt man, dass die Aufgabe fertig ist?
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: kontext
+    attributes:
+      label: Zusätzlicher Kontext
+      description: Screenshots, Links, Notizen etc.
+    validations:
+      required: false
