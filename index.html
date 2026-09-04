@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mementomorium – Offizielle Website</title>
+  <meta name="description" content="Mementomorium – Rock/Metal Band. Musik, Tourdaten, Galerie und Booking.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="site-header" id="site-header">
+    <nav class="navbar">
+      <a href="#hero" class="logo">MEMENTO<span>MORIUM</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#musik">Musik</a></li>
+        <li><a href="#tourdaten">Tourdaten</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero">
+      <div class="hero-bg" style="background-image: url('assets/img/hero-placeholder.svg');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">MEMENTOMORIUM</h1>
+        <p class="hero-tagline">Aus Asche geboren. Aus Lärm geformt. Erinnere dich, dass du sterblich bist.</p>
+        <a href="#tourdaten" class="btn btn-primary">Tourdaten ansehen</a>
+      </div>
+      <a href="#musik" class="scroll-hint" aria-label="Nach unten scrollen">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===== MUSIK ===== -->
+    <section id="musik" class="section music-section">
+      <div class="container">
+        <h2 class="section-title">Musik</h2>
+        <p class="section-subtitle">Unsere neuesten Releases – rein hören und folgen.</p>
+
+        <div class="player-wrapper">
+          <!--
+            PLATZHALTER-EMBED (Spotify oder Bandcamp)
+            Spotify: URL im "src" durch euren eigenen Embed-Link ersetzen
+            (Spotify -> Teilen -> Einbetten -> Code kopieren, "src" übernehmen).
+            Bandcamp funktioniert analog über den Bandcamp Embed-Code.
+          -->
+          <iframe
+            class="player-embed"
+            src="https://open.spotify.com/embed/artist/0LyfQWJT6nXafLPZqxe9Of?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Mementomorium Musik-Player (Platzhalter)">
+          </iframe>
+        </div>
+
+        <div class="stream-links">
+          <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="stream-link">
+            <span class="stream-icon" aria-hidden="true">♫</span> Spotify
+          </a>
+          <a href="https://music.apple.com" target="_blank" rel="noopener noreferrer" class="stream-link">
+            <span class="stream-icon" aria-hidden="true">♪</span> Apple Music
+          </a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="stream-link">
+            <span class="stream-icon" aria-hidden="true">▶</span> YouTube
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOURDATEN ===== -->
+    <section id="tourdaten" class="section tour-section">
+      <div class="container">
+        <h2 class="section-title">Tourdaten</h2>
+        <p class="section-subtitle">Kommt vorbei – live ist am lautesten.</p>
+
+        <ul class="tour-list">
+          <li class="tour-item">
+            <div class="tour-date">
+              <span class="tour-day">14</span>
+              <span class="tour-month">NOV</span>
+              <span class="tour-year">2026</span>
+            </div>
+            <div class="tour-info">
+              <h3 class="tour-venue">Underground Hall</h3>
+              <p class="tour-location">Berlin, Deutschland</p>
+            </div>
+            <a href="#" class="btn btn-outline tour-ticket">Tickets</a>
+          </li>
+
+          <li class="tour-item">
+            <div class="tour-date">
+              <span class="tour-day">02</span>
+              <span class="tour-month">DEZ</span>
+              <span class="tour-year">2026</span>
+            </div>
+            <div class="tour-info">
+              <h3 class="tour-venue">Black Iron Club</h3>
+              <p class="tour-location">Hamburg, Deutschland</p>
+            </div>
+            <a href="#" class="btn btn-outline tour-ticket">Tickets</a>
+          </li>
+
+          <li class="tour-item">
+            <div class="tour-date">
+              <span class="tour-day">19</span>
+              <span class="tour-month">JAN</span>
+              <span class="tour-year">2027</span>
+            </div>
+            <div class="tour-info">
+              <h3 class="tour-venue">Vulture Arena</h3>
+              <p class="tour-location">Wien, Österreich</p>
+            </div>
+            <a href="#" class="btn btn-outline tour-ticket">Tickets</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== GALERIE ===== -->
+    <section id="galerie" class="section gallery-section">
+      <div class="container">
+        <h2 class="section-title">Galerie</h2>
+        <p class="section-subtitle">Momente von der Bühne und dahinter.</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="assets/img/gallery-01.svg" alt="Bandfoto Platzhalter 1" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/img/gallery-02.svg" alt="Bandfoto Platzhalter 2" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/img/gallery-03.svg" alt="Bandfoto Platzhalter 3" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/img/gallery-04.svg" alt="Bandfoto Platzhalter 4" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/img/gallery-05.svg" alt="Bandfoto Platzhalter 5" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/img/gallery-06.svg" alt="Bandfoto Platzhalter 6" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTAKT / BOOKING ===== -->
+    <section id="kontakt" class="section contact-section">
+      <div class="container">
+        <h2 class="section-title">Kontakt &amp; Booking</h2>
+        <p class="section-subtitle">Für Anfragen, Booking und Presse.</p>
+
+        <div class="contact-grid">
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Nachricht senden</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="booking-info">
+            <h3>Booking</h3>
+            <p>Für Konzertanfragen und Booking wendet euch direkt per E-Mail an uns:</p>
+            <a class="booking-email" href="mailto:booking@mementomorium-band.de">booking@mementomorium-band.de</a>
+
+            <h3>Social Media</h3>
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Mementomorium. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
