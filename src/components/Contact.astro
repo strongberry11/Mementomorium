@@ -1,0 +1,109 @@
+---
+const bookingEmail = "booking@mementomorium-band.de";
+const socialLinks = [
+  { href: "https://www.instagram.com/mementomorium.official/", label: "Instagram" },
+  { href: "https://www.tiktok.com/@mementomorium.official?_r=1&_t=ZG-99SKmE4Gau0", label: "TikTok" },
+];
+---
+
+<section id="kontakt" class="bg-ink py-25">
+  <div class="mx-auto max-w-[1140px] px-6">
+    <h2
+      class="text-center font-display text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-wide after:mx-auto after:mt-4.5 after:block after:h-0.75 after:w-16 after:bg-blood"
+    >
+      Kontakt &amp; Booking
+    </h2>
+    <p class="mx-auto mt-4 mb-14 max-w-[520px] text-center text-ash">Für Anfragen, Booking und Presse.</p>
+
+    <div class="mx-auto grid max-w-[960px] gap-11 md:grid-cols-[1.3fr_1fr] md:gap-15">
+      <form id="contact-form" novalidate class="min-w-0">
+        <div class="mb-5">
+          <label for="name" class="mb-2 block text-xs tracking-widest text-ash uppercase">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
+            class="w-full rounded border border-charcoal-light bg-charcoal px-3.5 py-3 font-body text-base text-bone transition focus:border-blood-bright focus:outline-none"
+          />
+        </div>
+        <div class="mb-5">
+          <label for="email" class="mb-2 block text-xs tracking-widest text-ash uppercase">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full rounded border border-charcoal-light bg-charcoal px-3.5 py-3 font-body text-base text-bone transition focus:border-blood-bright focus:outline-none"
+          />
+        </div>
+        <div class="mb-5">
+          <label for="message" class="mb-2 block text-xs tracking-widest text-ash uppercase">Nachricht</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full resize-y rounded border border-charcoal-light bg-charcoal px-3.5 py-3 font-body text-base text-bone transition focus:border-blood-bright focus:outline-none"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="inline-block rounded-sm border-2 border-blood bg-blood px-8 py-3.5 text-sm font-semibold tracking-widest text-bone uppercase transition hover:-translate-y-0.5 hover:border-blood-bright hover:bg-blood-bright"
+        >
+          Nachricht senden
+        </button>
+        <p id="form-status" role="status" aria-live="polite" class="mt-3.5 min-h-[1.2em] text-sm text-blood-bright">
+        </p>
+      </form>
+
+      <div>
+        <h3 class="mb-3 text-xl font-bold text-bone">Booking</h3>
+        <p class="mb-3 text-ash">Für Konzertanfragen und Booking wendet euch direkt per E-Mail an uns:</p>
+        <a
+          href={`mailto:${bookingEmail}`}
+          class="mb-9 inline-block border-b border-blood-bright pb-0.5 font-semibold text-blood-bright transition hover:border-bone hover:text-bone"
+        >
+          {bookingEmail}
+        </a>
+
+        <h3 class="mb-3 text-xl font-bold text-bone">Social Media</h3>
+        <div class="flex flex-wrap gap-4.5">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                class="border-b border-transparent pb-0.5 text-sm font-semibold tracking-wide uppercase transition hover:border-blood-bright hover:text-blood-bright"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Clientseitige Vorschau ohne Backend — für echten Versand siehe README.md.
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const status = document.getElementById("form-status") as HTMLElement;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      status.textContent = "Bitte füllt alle Felder korrekt aus.";
+      return;
+    }
+
+    status.textContent = "Danke! Eure Nachricht wurde erfasst (Demo – noch kein Versand eingerichtet).";
+    form.reset();
+  });
+</script>

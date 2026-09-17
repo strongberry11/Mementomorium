@@ -1,0 +1,56 @@
+---
+const streamLinks = [
+  { href: "https://open.spotify.com", label: "Spotify", icon: "♫" },
+  { href: "https://music.apple.com", label: "Apple Music", icon: "♪" },
+  { href: "https://www.youtube.com", label: "YouTube", icon: "▶" },
+];
+---
+
+<section id="musik" class="bg-ink-soft py-25">
+  <div class="mx-auto max-w-[1140px] px-6">
+    <h2
+      class="text-center font-display text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-wide after:mx-auto after:mt-4.5 after:block after:h-0.75 after:w-16 after:bg-blood"
+    >
+      Musik
+    </h2>
+    <p class="mx-auto mt-4 mb-14 max-w-[520px] text-center text-ash">
+      Unsere neuesten Releases – rein hören und folgen.
+    </p>
+
+    <div class="mx-auto max-w-[720px] overflow-hidden rounded-lg border border-charcoal-light bg-charcoal">
+      <!--
+        PLATZHALTER-EMBED (Spotify oder Bandcamp)
+        Spotify: URL im "src" durch euren eigenen Embed-Link ersetzen
+        (Spotify -> Teilen -> Einbetten -> Code kopieren, "src" übernehmen).
+        Bandcamp funktioniert analog über den Bandcamp Embed-Code.
+      -->
+      <iframe
+        class="block border-none"
+        src="https://open.spotify.com/embed/artist/0LyfQWJT6nXafLPZqxe9Of?utm_source=generator&theme=0"
+        width="100%"
+        height="352"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Mementomorium Musik-Player (Platzhalter)"></iframe>
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-5">
+      {
+        streamLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2.5 rounded-full border border-charcoal-light px-6 py-3 text-sm font-semibold tracking-wide uppercase transition hover:-translate-y-0.5 hover:border-blood-bright hover:text-blood-bright"
+          >
+            <span aria-hidden="true" class="text-lg">
+              {link.icon}
+            </span>
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
