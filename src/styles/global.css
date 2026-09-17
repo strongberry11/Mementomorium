@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Band-Farbpalette & Schriften — hier zentral anpassen, erzeugt automatisch
+   Utility-Klassen wie bg-ink, text-blood-bright, font-display, animate-scroll-down */
+@theme {
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #121212;
+  --color-charcoal: #1c1c1e;
+  --color-charcoal-light: #2a2a2d;
+  --color-blood: #b3121b;
+  --color-blood-bright: #e0141f;
+  --color-bone: #f2f0ec;
+  --color-ash: #9a9a9a;
+  --font-display: "Cinzel", serif;
+  --font-body: "Oswald", sans-serif;
+  --animate-scroll-down: scroll-down 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 1;
+    top: 8px;
+  }
+
+  100% {
+    opacity: 0;
+    top: 22px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink font-body font-light text-bone;
+
+  -webkit-font-smoothing: antialiased;
+}

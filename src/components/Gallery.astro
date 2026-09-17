@@ -1,0 +1,32 @@
+---
+const photos = Array.from({ length: 6 }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  return { src: `/assets/img/gallery-${n}.svg`, alt: `Bandfoto Platzhalter ${i + 1}` };
+});
+---
+
+<section id="galerie" class="bg-ink-soft py-25">
+  <div class="mx-auto max-w-[1140px] px-6">
+    <h2
+      class="text-center font-display text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-wide after:mx-auto after:mt-4.5 after:block after:h-0.75 after:w-16 after:bg-blood"
+    >
+      Galerie
+    </h2>
+    <p class="mx-auto mt-4 mb-14 max-w-[520px] text-center text-ash">Momente von der Bühne und dahinter.</p>
+
+    <div class="grid grid-cols-2 gap-2 sm:gap-3.5 md:grid-cols-3">
+      {
+        photos.map((photo) => (
+          <div class="group aspect-square overflow-hidden rounded-md border border-charcoal-light">
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              class="h-full w-full object-cover grayscale contrast-[1.05] transition duration-400 group-hover:scale-[1.08] group-hover:grayscale-0"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

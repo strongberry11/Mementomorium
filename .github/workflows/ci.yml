@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint:
-    name: Lint HTML / CSS / JS
+    name: Build & Lint (Astro / Tailwind / CSS / JS)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Lint HTML (html-validate)
-        run: npm run lint:html
+      - name: Build (astro build)
+        run: npm run build
+
+      - name: Type-check Astro components
+        run: npm run check
 
       - name: Lint CSS (stylelint)
         run: npm run lint:css
 
-      - name: Lint JS (eslint)
+      - name: Lint JS/Astro (eslint)
         run: npm run lint:js
+
+      - name: Lint built HTML (html-validate)
+        run: npm run lint:html
 
   link-check:
     name: Check links & anchors
@@ -36,17 +42,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (astro build)
+        run: npm run build
+
       - name: Lychee link check
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --no-progress
+            --root-dir ./dist
             --exclude "https://www.instagram.com/.*"
             --exclude "https://www.tiktok.com/.*"
             --accept 200,206,429
             --max-retries 3
             --timeout 20
-            index.html
+            dist/index.html
           fail: true
 
   lighthouse:
@@ -59,9 +76,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (astro build)
+        run: npm run build
 
       - name: Serve site
-        run: npx --yes http-server . -p 8080 --silent &
+        run: npx --yes http-server dist -p 8080 --silent &
 
       - name: Wait for local server
         run: npx --yes wait-on http://127.0.0.1:8080/index.html

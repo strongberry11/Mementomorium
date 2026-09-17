@@ -1,0 +1,83 @@
+---
+const navItems = [
+  { href: "#musik", label: "Musik" },
+  { href: "#tourdaten", label: "Tourdaten" },
+  { href: "#galerie", label: "Galerie" },
+  { href: "#kontakt", label: "Kontakt" },
+];
+---
+
+<header
+  id="site-header"
+  data-scrolled="false"
+  class="fixed inset-x-0 top-0 z-50 bg-transparent transition-[background-color,box-shadow] duration-300 data-[scrolled=true]:bg-ink/90 data-[scrolled=true]:shadow-lg data-[scrolled=true]:shadow-black/50 data-[scrolled=true]:backdrop-blur-md"
+>
+  <nav class="mx-auto flex max-w-[1140px] items-center justify-between px-6 py-4.5">
+    <a href="#hero" class="font-display text-xl font-black tracking-wide text-bone">
+      MEMENTO<span class="text-blood-bright">MORIUM</span>
+    </a>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      data-open="false"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="nav-links"
+      class="peer group relative z-50 flex h-5 w-7 flex-col justify-between border-0 bg-transparent p-0 md:hidden"
+    >
+      <span
+        class="block h-0.5 w-full bg-bone transition-transform duration-300 group-data-[open=true]:translate-y-[9px] group-data-[open=true]:rotate-45"
+      ></span>
+      <span
+        class="block h-0.5 w-full bg-bone transition-opacity duration-300 group-data-[open=true]:opacity-0"
+      ></span>
+      <span
+        class="block h-0.5 w-full bg-bone transition-transform duration-300 group-data-[open=true]:-translate-y-[9px] group-data-[open=true]:-rotate-45"
+      ></span>
+    </button>
+
+    <ul
+      id="nav-links"
+      class="fixed inset-y-0 right-0 flex w-[min(78vw,320px)] translate-x-full flex-col items-start justify-center gap-8 bg-ink-soft p-10 shadow-[-8px_0_24px_rgba(0,0,0,0.5)] transition-transform duration-300 peer-data-[open=true]:translate-x-0 md:static md:w-auto md:translate-x-0 md:flex-row md:items-center md:gap-9 md:bg-transparent md:p-0 md:shadow-none"
+    >
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="relative pb-1 text-sm font-semibold tracking-widest text-bone uppercase after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blood-bright after:transition-[width] after:duration-300 hover:after:w-full"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById("site-header") as HTMLElement;
+  const navToggle = document.getElementById("nav-toggle") as HTMLButtonElement;
+  const navLinks = document.getElementById("nav-links") as HTMLElement;
+
+  const setScrolled = () => {
+    header.dataset.scrolled = String(window.scrollY > 40);
+  };
+  setScrolled();
+  window.addEventListener("scroll", setScrolled, { passive: true });
+
+  const setNavOpen = (open: boolean) => {
+    navToggle.dataset.open = String(open);
+    navToggle.setAttribute("aria-expanded", String(open));
+  };
+
+  navToggle.addEventListener("click", () => {
+    setNavOpen(navToggle.dataset.open !== "true");
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setNavOpen(false));
+  });
+</script>

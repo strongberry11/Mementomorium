@@ -1,0 +1,43 @@
+---
+// Platzhalter-Termine — hier neue Konzerte ergänzen oder anpassen.
+const shows = [
+  { day: "14", month: "NOV", year: "2026", venue: "Underground Hall", location: "Berlin, Deutschland", ticketUrl: "#" },
+  { day: "02", month: "DEZ", year: "2026", venue: "Black Iron Club", location: "Hamburg, Deutschland", ticketUrl: "#" },
+  { day: "19", month: "JAN", year: "2027", venue: "Vulture Arena", location: "Wien, Österreich", ticketUrl: "#" },
+];
+---
+
+<section id="tourdaten" class="bg-ink py-25">
+  <div class="mx-auto max-w-[1140px] px-6">
+    <h2
+      class="text-center font-display text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-wide after:mx-auto after:mt-4.5 after:block after:h-0.75 after:w-16 after:bg-blood"
+    >
+      Tourdaten
+    </h2>
+    <p class="mx-auto mt-4 mb-14 max-w-[520px] text-center text-ash">Kommt vorbei – live ist am lautesten.</p>
+
+    <ul class="mx-auto flex max-w-[800px] flex-col gap-4.5">
+      {
+        shows.map((show) => (
+          <li class="flex flex-wrap items-center gap-6 rounded-md border border-charcoal-light border-l-4 border-l-blood bg-charcoal px-7 py-5.5 transition hover:translate-x-1.5 hover:border-l-blood-bright">
+            <div class="flex min-w-[72px] flex-col items-center leading-tight">
+              <span class="font-display text-3xl font-black text-blood-bright">{show.day}</span>
+              <span class="text-xs tracking-widest text-ash uppercase">{show.month}</span>
+              <span class="text-[0.7rem] text-ash">{show.year}</span>
+            </div>
+            <div class="min-w-[180px] flex-1">
+              <h3 class="mb-1 text-xl font-bold">{show.venue}</h3>
+              <p class="m-0 text-sm text-ash">{show.location}</p>
+            </div>
+            <a
+              href={show.ticketUrl}
+              class="shrink-0 self-stretch rounded-sm border-2 border-ash px-8 py-3.5 text-center text-sm font-semibold tracking-widest uppercase transition hover:border-blood-bright hover:text-blood-bright sm:self-auto"
+            >
+              Tickets
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
